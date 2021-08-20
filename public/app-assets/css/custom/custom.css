@@ -1,0 +1,29 @@
+/*================================================================================
+NOTE:
+------
+PLACE HERE YOUR OWN CSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+.default-color {
+    background-color: #ad256c;
+}
+
+.file-upload-custom {
+    cursor: pointer;
+}
+
+.custom-checkbox
+{
+    pointer-events: auto !important;
+    opacity: .5 !important;
+    border-radius: 4px !important;
+    position: absolute !important;
+    z-index: 0 !important;
+    transform: translate(-50%,-50%) !important;
+    width: 18px !important;
+    height: 18px !important;
+    content: '' !important;
+    -webkit-transition: .2s !important;
+    transition: .2s !important;
+    border: 2px solid #5a5a5a !important;
+}

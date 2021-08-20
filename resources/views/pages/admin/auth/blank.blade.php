@@ -1,0 +1,15 @@
+@extends('layouts.admin-auth')
+@section('meta-description')
+@endsection
+@section('meta-keywords')
+@endsection
+@section('title')
+@endsection
+@section('page-level-css')
+@endsection
+@section('content')
+@endsection
+@section('page-vendor-script')
+@endsection
+@section('page-level-js')
+@endsection
