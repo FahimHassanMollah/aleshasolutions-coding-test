@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Models\UserPermission;
 use App\Models\UserPermissionGroup;
 use App\Models\UserGroup;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserPermissionService
 {
@@ -31,5 +33,18 @@ class UserPermissionService
     {
         $userGroup = UserGroup::find($userGroupId);
         return $detachExisting ? $userGroup->userPermissions()->sync($userPermissionId) : $userGroup->userPermissions()->attach($userPermissionId);
+    }
+
+    /**
+     * Get UserPermission collection.
+     * @param int|null $paginate
+     * @return LengthAwarePaginator|Collection|null
+     */
+    public static function userPermissions(int $paginate = null)
+    {
+        if (!$paginate){
+            return UserPermission::all();
+        }
+        return UserPermission::paginate($paginate);
     }
 }

@@ -24,15 +24,15 @@
                     <div class="col s2 m6 l6">
                         <div class="right-align">
                             <a href="{{ route('admin.userGroups.create') }}" class="btn-floating btn-small waves-effect waves-light breadcrumbs-btn tooltipped @cannot('user-group-create') disabled @endcannot" data-position="left" data-tooltip="Create"><i class="material-icons">add</i></a>
-                            <a href="#deleteModal" class="modal-trigger btn-floating btn-small waves-effect waves-light btn-flat breadcrumbs-btn tooltipped " data-position="left" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+                            <a href="#deleteModal" class="modal-trigger btn-floating btn-small waves-effect waves-light btn-flat breadcrumbs-btn tooltipped @cannot('user-group-delete') disabled @endcannot" data-position="left" data-tooltip="Delete"><i class="material-icons">delete</i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        @endsection
-        @section('content')
-            <div class="col s12">
+@endsection
+@section('content')
+        <div class="col s12">
                 <div class="container ">
                     <div class="section">
                         <div class="card">
@@ -92,8 +92,8 @@
                 </div>
                 <div class="content-overlay"></div>
             </div>
-            <!-- Delete Modal -->
-            @include('partials.pages.admin.delete-modal')
+        <!-- Delete Modal -->
+        @include('partials.pages.admin.delete-modal')
     </form>
 @endsection
 @section('page-vendor-script')

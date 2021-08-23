@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 class UserService
 {
     /**
-     * Get all User.
+     * Get User collection.
      * @param int|null $paginate
      * @return LengthAwarePaginator|Collection|null
      */
@@ -22,7 +22,7 @@ class UserService
         if (!$paginate){
             return User::orderBy('first_name', 'asc')->get();
         }
-        return User::orderBy('first_name', 'asc')->paginate(20);
+        return User::orderBy('first_name', 'asc')->paginate($paginate);
     }
 
     /**

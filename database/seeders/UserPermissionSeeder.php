@@ -33,7 +33,7 @@ class UserPermissionSeeder extends Seeder
             [
                 'user_permission_group_id'      => 1, //User
                 'name'                          => 'User Update',
-                'slug'                          => 'user-Update',
+                'slug'                          => 'user-update',
             ],
             [
                 'user_permission_group_id'      => 1, //User
@@ -58,7 +58,7 @@ class UserPermissionSeeder extends Seeder
             [
                 'user_permission_group_id'      => 2, //User Group
                 'name'                          => 'User Group Update',
-                'slug'                          => 'user-group-Update',
+                'slug'                          => 'user-group-update',
             ],
             [
                 'user_permission_group_id'      => 2, //User Group
@@ -83,7 +83,7 @@ class UserPermissionSeeder extends Seeder
             [
                 'user_permission_group_id'      => 3, //Category
                 'name'                          => 'Category Update',
-                'slug'                          => 'category-Update',
+                'slug'                          => 'category-update',
             ],
             [
                 'user_permission_group_id'      => 3, //Category
@@ -108,7 +108,7 @@ class UserPermissionSeeder extends Seeder
             [
                 'user_permission_group_id'      => 4, //Product
                 'name'                          => 'Product Update',
-                'slug'                          => 'product-Update',
+                'slug'                          => 'product-update',
             ],
             [
                 'user_permission_group_id'      => 4, //Product
@@ -133,7 +133,7 @@ class UserPermissionSeeder extends Seeder
             [
                 'user_permission_group_id'      => 5, //Order
                 'name'                          => 'Order Update',
-                'slug'                          => 'order-Update',
+                'slug'                          => 'order-update',
             ],
             [
                 'user_permission_group_id'      => 5, //Order

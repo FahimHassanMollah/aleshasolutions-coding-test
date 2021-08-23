@@ -58,4 +58,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(UserGroup::class,'user_group_id', 'id');
     }
+
+    /**
+     * Check a User is superAdmin.
+     * @param User $user
+     * @return bool
+     */
+    public function isSuperAdministrator(User $user): bool
+    {
+        return $user->super_admin == 1;
+    }
 }

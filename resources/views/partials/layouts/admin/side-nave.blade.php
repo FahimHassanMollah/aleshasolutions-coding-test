@@ -5,28 +5,52 @@
     <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
         <li class="bold"><a class="waves-effect waves-pink {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}" href="{{ route('admin.dashboard') }}"><i class="material-icons">dashboard</i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a></li>
         <li class="navigation-header"><a class="navigation-header-text">System</a><i class="navigation-header-icon material-icons">more_horiz</i></li>
+        @canany(['user-view-any', 'user-view', 'user-create', 'user-update', 'user-delete', 'user-group-view-any', 'user-group-view', 'user-group-create', 'user-group-Update', 'user-group-delete'])
         <li class="bold
-        @if(Route::currentRouteName() == "admin.userGroups.index"
+            @if(Route::currentRouteName() == "admin.users.index"
+            or Route::currentRouteName() == "admin.users.create"
+            or Route::currentRouteName() == "admin.users.show"
+            or Route::currentRouteName() == "admin.users.edit"
+
+            or Route::currentRouteName() == "admin.userGroups.index"
             or Route::currentRouteName() == "admin.userGroups.create"
             or Route::currentRouteName() == "admin.userGroups.show"
             or Route::currentRouteName() == "admin.userGroups.edit")
             {{ 'active open' }}
-        @endif">
+            @endif">
             <a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">people</i><span class="menu-title" data-i18n="Menu levels">Users</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a href="JavaScript:void(0)"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Second level">Users</span></a></li>
-                    <li><a class="waves-effect waves-pink
+                    @canany(['user-view-any', 'user-view', 'user-create', 'user-update', 'user-delete'])
+                    <li>
+                        <a class="waves-effect waves-pink
+                        @if(Route::currentRouteName() == "admin.users.index"
+                            or Route::currentRouteName() == "admin.users.create"
+                            or Route::currentRouteName() == "admin.users.show"
+                            or Route::currentRouteName() == "admin.users.edit")
+                                {{ 'active' }}
+                        @endif" href="{{ route('admin.users.index') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Second level">Users</span>
+                        </a>
+                    </li>
+                    @endcanany
+                    @canany(['user-group-view-any', 'user-group-view', 'user-group-create', 'user-group-Update', 'user-group-delete'])
+                    <li>
+                        <a class="waves-effect waves-pink
                         @if(Route::currentRouteName() == "admin.userGroups.index"
                             or Route::currentRouteName() == "admin.userGroups.create"
                             or Route::currentRouteName() == "admin.userGroups.show"
                             or Route::currentRouteName() == "admin.userGroups.edit")
                                 {{ 'active' }}
-                        @endif" href="{{ route('admin.userGroups.index') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Second level">User Groups</span></a>
+                        @endif" href="{{ route('admin.userGroups.index') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Second level">User Groups</span>
+                        </a>
                     </li>
+                    @endcanany
                 </ul>
             </div>
         </li>
+        @endcanany
+
+
         <li class="navigation-header"><a class="navigation-header-text">Catalog</a><i class="navigation-header-icon material-icons">more_horiz</i></li>
         <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">style</i><span class="menu-title" data-i18n="Menu levels">Products</span></a>
             <div class="collapsible-body">

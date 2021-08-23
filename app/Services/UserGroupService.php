@@ -13,7 +13,7 @@ use Exception;
 class UserGroupService
 {
     /**
-     * Get all UserGroup.
+     * Get UserGroup collection
      * @param int|null $paginate
      * @return LengthAwarePaginator|Collection|null
      */
@@ -22,7 +22,7 @@ class UserGroupService
         if (!$paginate){
             return UserGroup::orderBy('name', 'asc')->get();
         }
-        return UserGroup::orderBy('name', 'asc')->paginate(20);
+        return UserGroup::orderBy('name', 'asc')->paginate($paginate);
     }
 
     /**

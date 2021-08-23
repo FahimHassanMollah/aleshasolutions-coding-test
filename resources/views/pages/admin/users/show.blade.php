@@ -26,8 +26,8 @@
                 </div>
                 <div class="col s2 m6 l6">
                     <div class="right-align">
-                        <a href="{{ route('admin.users.edit', $user->id) }}" class="btn-floating btn-small waves-effect waves-light breadcrumbs-btn tooltipped" data-position="left" data-tooltip="Edit"><i class="material-icons">edit</i></a>
-                        <a href="{{ route('admin.users.index') }}" class="modal-trigger btn-floating btn-small waves-effect waves-light btn-flat breadcrumbs-btn tooltipped" data-position="left" data-tooltip="Back"><i class="material-icons">backspace</i></a>
+                        <a href="{{ route('admin.users.edit', $user->id) }}" class="btn-floating btn-small waves-effect waves-light breadcrumbs-btn tooltipped @cannot('user-update') disabled @endcannot" data-position="left" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+                        <a href="{{ route('admin.users.index') }}" class="modal-trigger btn-floating btn-small waves-effect waves-light btn-flat breadcrumbs-btn tooltipped @cannot('user-view-any') disabled @endcannot" data-position="left" data-tooltip="Back"><i class="material-icons">backspace</i></a>
                     </div>
                 </div>
             </div>
@@ -73,15 +73,6 @@
     </div>
 @endsection
 @section('page-vendor-script')
-    <script src="{{ asset('app-assets/vendors/filepond/filepond.js') }}"></script>
 @endsection
 @section('page-level-js')
-    <!-- user create form related script start -->
-    <script>
-        $(document).ready(function() {
-            $('input#firstName, input#lastName, input#email').characterCounter();
-            M.updateTextFields();
-        });
-    </script>
-    <!-- user create form related script end -->
 @endsection

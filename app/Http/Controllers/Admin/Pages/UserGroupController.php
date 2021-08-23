@@ -17,7 +17,7 @@ class UserGroupController extends Controller
 {
     public function index(): View
     {
-        $userGroups = UserGroupService::userGroups();
+        $userGroups = UserGroupService::userGroups(20);
         return view('pages.admin.user-groups.index')->with(['userGroups' => $userGroups]);
     }
 

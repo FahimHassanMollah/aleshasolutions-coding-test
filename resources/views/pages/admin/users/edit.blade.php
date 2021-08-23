@@ -28,8 +28,8 @@
                     </div>
                     <div class="col s2 m6 l6">
                         <div class="right-align">
-                            <a href="#updateConfirmModal" class="modal-trigger btn-floating btn-small waves-effect waves-light breadcrumbs-btn tooltipped" data-position="left" data-tooltip="Update"><i class="material-icons">update</i></a>
-                            <a href="{{ route('admin.users.index') }}" class="btn-floating btn-small waves-effect waves-light btn-flat breadcrumbs-btn tooltipped" data-position="left" data-tooltip="Cancel"><i class="material-icons">backspace</i></a>
+                            <a href="#updateConfirmModal" class="modal-trigger btn-floating btn-small waves-effect waves-light breadcrumbs-btn tooltipped @cannot('user-update') disabled @endcannot" data-position="left" data-tooltip="Update"><i class="material-icons">update</i></a>
+                            <a href="{{ route('admin.users.index') }}" class="btn-floating btn-small waves-effect waves-light btn-flat breadcrumbs-btn tooltipped @cannot('user-view-any') disabled @endcannot" data-position="left" data-tooltip="Cancel"><i class="material-icons">backspace</i></a>
                         </div>
                     </div>
                 </div>
