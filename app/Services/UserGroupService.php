@@ -14,10 +14,14 @@ class UserGroupService
 {
     /**
      * Get all UserGroup.
-     * @return LengthAwarePaginator|null
+     * @param int|null $paginate
+     * @return LengthAwarePaginator|Collection|null
      */
-    public static function userGroups(): ?LengthAwarePaginator
+    public static function userGroups(int $paginate = null)
     {
+        if (!$paginate){
+            return UserGroup::orderBy('name', 'asc')->get();
+        }
         return UserGroup::orderBy('name', 'asc')->paginate(20);
     }
 
@@ -142,6 +146,20 @@ class UserGroupService
         } else {
             return false;
         }
+    }
+
+    /**
+     * Update UserGroup
+     * @param string $name
+     * @param int $userGroupId
+     * @return UserGroup
+     */
+    public static function updateUserGroup(string $name, int $userGroupId): UserGroup
+    {
+        $userGroup = UserGroup::find($userGroupId)->fill(['name' => $name]);
+        $userGroup->save();
+        return $userGroup;
+
     }
 
     /**

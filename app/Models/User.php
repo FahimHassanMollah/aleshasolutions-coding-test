@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +20,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'user_group_id',
+        'title',
+        'first_name',
+        'last_name',
         'email',
+        'avatar',
         'password',
+        'status',
+        'super_admin',
     ];
 
     /**
@@ -41,4 +49,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Belongs to relation of UserGroup to User
+     * @return BelongsTo
+     */
+    public function userGroup(): BelongsTo
+    {
+        return $this->belongsTo(UserGroup::class,'user_group_id', 'id');
+    }
 }

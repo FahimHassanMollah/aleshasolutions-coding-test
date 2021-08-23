@@ -63,17 +63,15 @@ class UserGroupController extends Controller
     public function update(UpdateUserGroupRequest $updateUserGroupRequest, UserGroup $userGroup): RedirectResponse
     {
         $userGroupName      = $updateUserGroupRequest->name;
-        $userPermissionId   = $updateUserGroupRequest->user_permission_id;
+        $userPermissionId   = $updateUserGroupRequest->user_permission_id ?: [];
         $userGroupId        = $userGroup->id;
 
-        if (UserGroupService::userGroupAndAssignedUserPermissionsIsClean($userGroupName, $userPermissionId, $userGroupId))
-        {
+        if (UserGroupService::userGroupAndAssignedUserPermissionsIsClean($userGroupName, $userPermissionId, $userGroupId)) {
             return back()->withMessage('Error! Must one value have to change on update.');
         }
-        $userGroup->save();
+        UserGroupService::updateUserGroup($userGroupName, $userGroupId);
 
-        if (!UserGroupService::assignedUserPermissionsAreClean($userPermissionId, $userGroupId))
-        {
+        if (!UserGroupService::assignedUserPermissionsAreClean($userPermissionId, $userGroupId)) {
             UserPermissionService::attachUserPermissionToUserGroup($userGroupId, $userPermissionId);
         }
         return redirect()->route('admin.userGroups.show', $userGroup->id)->withMessage('Success! Data updated.');
@@ -82,6 +80,7 @@ class UserGroupController extends Controller
 
     public function destroy(DeleteUserGroupRequest $deleteUserGroupRequest): RedirectResponse
     {
+
         UserGroup::destroy($deleteUserGroupRequest->selected_id);
         return redirect()->back()->withMessage('Success! Data deleted.');
     }

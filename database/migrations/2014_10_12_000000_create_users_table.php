@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('first_name',30);
             $table->string('last_name',30)->nullable();
             $table->string('email',50)->unique();
+            $table->string('avatar', 100)->nullable();
             $table->string('password',191);
             $table->rememberToken();
             $table->tinyInteger('status')->default(1)->comment('0: Inactive, 1: Active');

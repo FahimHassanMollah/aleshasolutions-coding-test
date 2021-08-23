@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Pages\DashboardController;
 use App\Http\Controllers\Admin\Pages\UserGroupController;
+use App\Http\Controllers\Admin\Pages\UserController;
 
 /*
 |--------------------------------------------------------------------------

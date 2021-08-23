@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\UserGroup;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateUserGroupRequest extends FormRequest
+class DeleteUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,19 @@ class UpdateUserGroupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'                  => 'required|max:30|unique:user_groups,name,'.$this->userGroup->id,
-            'user_permission_id'    => 'nullable|array'
+            'selected_id' => 'required',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'selected_id.required' => 'Error! Must have to select an item to delete.',
         ];
     }
 }
