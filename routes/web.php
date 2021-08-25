@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Pages\DashboardController;
 use App\Http\Controllers\Admin\Pages\UserGroupController;
 use App\Http\Controllers\Admin\Pages\UserController;
+use App\Http\Controllers\Admin\Pages\CategoryController;
+use App\Http\Controllers\Admin\Pages\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +48,26 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function(){
     Route::put('user-groups/{userGroup}', [UserGroupController::class, 'update'])->name('userGroups.update');
     Route::get('user-groups/{userGroup}/edit', [UserGroupController::class, 'edit'])->name('userGroups.edit');
     //End: Admin::Users -> User Group
+
+    //Start: Admin::Catalog -> Category
+    Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::post('categories', [CategoryController::class, 'store'])->name('categories.store');
+    Route::get('categories/create', [CategoryController::class, 'create'])->name('categories.create');
+    Route::delete('categories/destroy', [CategoryController::class, 'destroy'])->name('categories.destroy');
+    Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+    Route::put('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+    Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+    //End: Admin::Catalog -> Category
+
+    //Start: Admin::Catalog -> Category
+    Route::get('products', [ProductController::class, 'index'])->name('products.index');
+    Route::post('products', [ProductController::class, 'store'])->name('products.store');
+    Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
+    Route::delete('products/destroy', [ProductController::class, 'destroy'])->name('products.destroy');
+    Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
+    Route::put('products/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    //End: Admin::Catalog -> Category
 
 });
 

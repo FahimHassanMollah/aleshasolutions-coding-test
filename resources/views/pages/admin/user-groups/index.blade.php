@@ -17,8 +17,8 @@
                         <h5 class="breadcrumbs-title mt-0 mb-0"><span>User Groups (Roles)</span></h5>
                         <ol class="breadcrumbs mb-0">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">User Group</a></li>
-                            <li class="breadcrumb-item active">Index</li>
+                            <li class="breadcrumb-item"><a href="#">System</a></li>
+                            <li class="breadcrumb-item active">User Groups</li>
                         </ol>
                     </div>
                     <div class="col s2 m6 l6">

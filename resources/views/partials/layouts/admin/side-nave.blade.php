@@ -49,18 +49,51 @@
             </div>
         </li>
         @endcanany
-
-
         <li class="navigation-header"><a class="navigation-header-text">Catalog</a><i class="navigation-header-icon material-icons">more_horiz</i></li>
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">style</i><span class="menu-title" data-i18n="Menu levels">Products</span></a>
+        @canany(['user-view-any', 'user-view', 'user-create', 'user-update', 'user-delete', 'user-group-view-any', 'user-group-view', 'user-group-create', 'user-group-Update', 'user-group-delete'])
+        <li class="bold
+            @if(Route::currentRouteName() == "admin.categories.index"
+            or Route::currentRouteName() == "admin.categories.create"
+            or Route::currentRouteName() == "admin.categories.show"
+            or Route::currentRouteName() == "admin.categories.edit"
+
+            or Route::currentRouteName() == "admin.products.index"
+            or Route::currentRouteName() == "admin.products.create"
+            or Route::currentRouteName() == "admin.products.show"
+            or Route::currentRouteName() == "admin.products.edit")
+            {{ 'active open' }}
+            @endif">
+            <a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">style</i><span class="menu-title" data-i18n="Menu levels">Products</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a href="JavaScript:void(0)"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Second level">Categories</span></a></li>
-                    <li><a href="JavaScript:void(0)"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Second level">Products</span></a></li>
+                    @canany(['category-view-any', 'category-view', 'category-create', 'category-update', 'category-delete'])
+                    <li>
+                        <a class="waves-effect waves-pink
+                        @if(Route::currentRouteName() == "admin.categories.index"
+                            or Route::currentRouteName() == "admin.categories.create"
+                            or Route::currentRouteName() == "admin.categories.show"
+                            or Route::currentRouteName() == "admin.categories.edit")
+                            {{ 'active' }}
+                        @endif" href="{{ route('admin.categories.index') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Second level">Categories</span>
+                        </a>
+                    </li>
+                    @endcanany
+                    @canany(['product-view-any', 'product-view', 'product-create', 'product-Update', 'product-delete'])
+                    <li>
+                        <a class="waves-effect waves-pink
+                        @if(Route::currentRouteName() == "admin.products.index"
+                            or Route::currentRouteName() == "admin.products.create"
+                            or Route::currentRouteName() == "admin.products.show"
+                            or Route::currentRouteName() == "admin.products.edit")
+                        {{ 'active' }}
+                        @endif" href="{{ route('admin.products.index') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Second level">Products</span>
+                        </a>
+                    </li>
+                    @endcanany
                 </ul>
             </div>
         </li>
-
+        @endcanany
         <li class="navigation-header"><a class="navigation-header-text">Sales</a><i class="navigation-header-icon material-icons">more_horiz</i></li>
         <li class="bold"><a class="waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">monetization_on</i><span class="menu-title" data-i18n="Menu levels">Sales</span></a></li>
 

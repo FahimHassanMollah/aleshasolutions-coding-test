@@ -101,6 +101,20 @@ class UserService
         }
     }
 
+    /**
+     * Check is user clean.
+     * @param int $userId
+     * @param string $firstName
+     * @param string $email
+     * @param string $password
+     * @param int|null $status
+     * @param int|null $supperAdmin
+     * @param int|null $userGroupId
+     * @param string|null $title
+     * @param string|null $lastName
+     * @param string|null $avatar
+     * @return bool
+     */
     public static function userIsClean(int $userId, string $firstName, string $email, string $password, int $status = null, int $supperAdmin = null, int $userGroupId = null, string $title = null,  string $lastName = null, string $avatar = null): bool
     {
         $user = User::find($userId)->fill([
@@ -170,7 +184,13 @@ class UserService
         return true;
     }
 
-    public static function checkAdminSelfToDelete(int $userId, array $selectedId = [])
+    /**
+     * Check an admin can self delete.
+     * @param int $userId
+     * @param array $selectedId
+     * @return bool
+     */
+    public static function checkAdminSelfToDelete(int $userId, array $selectedId = []): bool
     {
         if (in_array($userId, $selectedId)){
             return false; // can self delete.

@@ -4,6 +4,7 @@
 @section('keywords')
 @endsection
 @section('title')
+    {{ "Users | ".config('app.name') }}
 @endsection
 @section('breadcrumbs')
     <form action="{{ route('admin.users.destroy') }}" method="post">

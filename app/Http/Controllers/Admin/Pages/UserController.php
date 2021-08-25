@@ -81,7 +81,7 @@ class UserController extends Controller
         }
         UserService::updateUser($user->id, $updateUserRequest->first_name, $updateUserRequest->email, $password, $updateUserRequest->status, $updateUserRequest->super_admin, $updateUserRequest->user_group_id, $updateUserRequest->title, $updateUserRequest->last_name, $avatarPath);
 
-        return redirect()->route('admin.users.show', $user->id)->withMessage('Success! Data Updated.');
+        return redirect()->route('admin.users.show', $user->id)->withMessage('Success! Data updated.');
     }
 
     public function destroy(DeleteUserRequest $deleteUserRequest)

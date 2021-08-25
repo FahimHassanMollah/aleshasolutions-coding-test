@@ -165,7 +165,6 @@
     </form>
 @endsection
 @section('page-vendor-script')
-    <script src="{{ asset('app-assets/vendors/filepond/filepond.js') }}"></script>
 @endsection
 @section('page-level-js')
     <!-- user create form related script start -->
