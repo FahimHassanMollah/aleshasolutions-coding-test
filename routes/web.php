@@ -19,8 +19,12 @@ use App\Http\Controllers\Admin\Pages\ProductController;
 */
 
 Route::get('/', function () {
-    return "index";
+    return view('layouts.front');
 })->name('index');
+
+Route::any('/{*}', function (){
+    return view('layouts.front');
+})->where('any', '.*');
 
 Route::get('/blank', function () {
     return view('pages.admin.blank');

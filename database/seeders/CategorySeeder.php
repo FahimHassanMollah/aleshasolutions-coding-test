@@ -57,7 +57,72 @@ class CategorySeeder extends Seeder
                 'slug'          => 'veggie-burger',
                 'category_id'   => 3,
             ],
-
+            [
+                'id'            => 8,
+                'name'          => 'Biriyani',
+                'slug'          => 'biriyani',
+                'category_id'   => null,
+            ],
+            [
+                'id'            => 9,
+                'name'          => 'Kacchi Biriyani',
+                'slug'          => 'kacchi-biriyani',
+                'category_id'   => 8,
+            ],
+            [
+                'id'            => 10,
+                'name'          => 'Tehari',
+                'slug'          => 'tehari',
+                'category_id'   => 8,
+            ],
+            [
+                'id'            => 11,
+                'name'          => 'Morog Polaw',
+                'slug'          => 'morog-polaw',
+                'category_id'   => 8,
+            ],
+            [
+                'id'            => 12,
+                'name'          => 'Rejala Polaw',
+                'slug'          => 'rejala-polaw',
+                'category_id'   => 8,
+            ],
+            [
+                'id'            => 13,
+                'name'          => 'Kabab',
+                'slug'          => 'kabab',
+                'category_id'   => null,
+            ],
+            [
+                'id'            => 14,
+                'name'          => 'Gorur Chap',
+                'slug'          => 'gorur-chap',
+                'category_id'   => 13,
+            ],
+            [
+                'id'            => 15,
+                'name'          => 'Boti Kabab',
+                'slug'          => 'boti-kabab',
+                'category_id'   => 13,
+            ],
+            [
+                'id'            => 16,
+                'name'          => 'Murgi Chap',
+                'slug'          => 'murgi chap',
+                'category_id'   => 13,
+            ],
+            [
+                'id'            => 17,
+                'name'          => 'Chicken Grill',
+                'slug'          => 'chicken-grill',
+                'category_id'   => 13,
+            ],
+            [
+                'id'            => 18,
+                'name'          => 'Shik Kabab',
+                'slug'          => 'shik-kabab',
+                'category_id'   => 13,
+            ],
         ]);
     }
 }

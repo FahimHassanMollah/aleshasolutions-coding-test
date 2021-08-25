@@ -8,58 +8,40 @@
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
     <meta name="author" content="Divas World">
-    <title>@yield('title')</title>
+    <title>{{ config('app.name') }}</title>
     <link rel="apple-touch-icon" href="{{ asset('app-assets/images/favicon/apple-touch-icon-152x152.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets/images/favicon/favicon-32x32.png') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- BEGIN: VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/vendors.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/noUiSlider/nouislider.min.css') }}">
 @yield('vendor-css')
 <!-- END: VENDOR CSS-->
     <!-- BEGIN: Page Level CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/themes/vertical-modern-menu-template/materialize.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/themes/vertical-modern-menu-template/style.css') }}">
-@yield(('page-level-css'))
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/themes/horizontal-menu-template/materialize.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/themes/horizontal-menu-template/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/layouts/style-horizontal.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/eCommerce-products-page.css') }}">
 <!-- END: Page Level CSS-->
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/custom/custom.css') }}">
     <!-- END: Custom CSS-->
-    @yield('style')
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <!-- END: Head-->
-<body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions 2-columns" data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
-
-<!-- BEGIN: Header-->
-@include('partials.layouts.admin.header')
-<!-- END: Header-->
-
-
-
-<!-- BEGIN: SideNav-->
-@include('partials.layouts.admin.side-nav')
-<!-- END: SideNav-->
-
-<!-- BEGIN: Page Main-->
-<div id="main">
-    <div class="row">
-        <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
-        @yield('breadcrumbs')
-        @yield('content')
-    </div>
+<body class="horizontal-layout page-header-light horizontal-menu preload-transitions 2-columns   " data-open="click" data-menu="horizontal-menu" data-col="2-columns">
+<div class="app">
+    <router-view></router-view>
 </div>
-<!-- END: Page Main-->
-
-<!--/ Theme Customizer -->
 
 <!-- BEGIN: Footer-->
-@include('partials.layouts.admin.footer')
 
 <!-- END: Footer-->
 <!-- BEGIN VENDOR JS-->
 <script src="{{ asset('app-assets/js/vendors.min.js') }}"></script>
 <!-- BEGIN VENDOR JS-->
 <!-- BEGIN PAGE VENDOR JS-->
-@yield('page-vendor-script')
+<script src="{{ 'app-assets/vendors/noUiSlider/nouislider.min.js' }}"></script>
 <!-- END PAGE VENDOR JS-->
 <!-- BEGIN THEME  JS-->
 <script src="{{ asset('app-assets/js/plugins.js') }}"></script>
@@ -68,7 +50,8 @@
 {{--<script src="{{ asset('app-assets/js/scripts/customizer.js') }}"></script>--}}
 <!-- END THEME  JS-->
 <!-- BEGIN PAGE LEVEL JS-->
-@yield('page-level-js')
+<script src="{{ 'app-assets/js/scripts/advance-ui-modals.js' }}"></script>
+<script src="{{ 'app-assets/js/scripts/eCommerce-products-page.js' }}"></script>
 <!-- END PAGE LEVEL JS-->
 <script>
     $(document).ready(function (){
@@ -85,5 +68,6 @@
         }
     });
 </script>
+<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

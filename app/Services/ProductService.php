@@ -145,4 +145,16 @@ class ProductService
         $product->delete();
     }
 
+    /**
+     * Get Product by Category ID.
+     * @param int $categoryId
+     * @return Collection
+     */
+    public static function productsByCategory(int $categoryId): Collection
+    {
+        return Product::whereHas('categories', function ($query) use ($categoryId){
+            $query->where('id', $categoryId);
+        })->get();
+    }
+
 }

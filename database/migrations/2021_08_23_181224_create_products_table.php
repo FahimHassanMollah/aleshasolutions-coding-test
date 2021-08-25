@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->float('price', 8, 2)->nullable();
             $table->string('slug', 70)->nullable()->unique();
             $table->longText('image')->nullable();
-            $table->boolean('status')->default(true);
+            $table->boolean('status')->default(1)->comment('0:Inactive, 1:Active');
             $table->timestamps();
             $table->softDeletes();
         });

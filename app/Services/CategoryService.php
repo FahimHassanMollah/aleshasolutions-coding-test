@@ -23,6 +23,20 @@ class CategoryService
      }
 
     /**
+     * Get Categories with Child.
+     * @param int|null $paginate
+     * @return Collection
+     */
+     public static function categoriesWithChild(int $paginate = null) : Collection
+     {
+         if (!$paginate){
+             return Category::whereNull('category_id')->with('childCategories.childCategories')->orderBy('name', 'asc')->get();
+         }
+         return Category::whereNull('category_id')->with('childCategories')->orderBy('name', 'asc')->paginate($paginate);
+
+     }
+
+    /**
      * get Category with Parent Categories
      * @param int|null $paginate
      * @return LengthAwarePaginator|Collection|null
