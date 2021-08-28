@@ -17,8 +17,10 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('customer_id');
             $table->tinyInteger('transaction_type')->unsigned()->default(0)->comment('0:cash, 1: card');
+            $table->boolean('pay_status')->default(0)->comment('0:Unpaid, 1:Paid');
             $table->longText('details')->nullable();
             $table->float('total')->default(0);
+            $table->boolean('status')->default(0)->comment('0:Pending, 1: Accept, 2: Shipped, 3:  Delivered, 4:Canceled');
             $table->timestamps();
         });
     }

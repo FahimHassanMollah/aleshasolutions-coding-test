@@ -95,11 +95,19 @@
         </li>
         @endcanany
         <li class="navigation-header"><a class="navigation-header-text">Sales</a><i class="navigation-header-icon material-icons">more_horiz</i></li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">monetization_on</i><span class="menu-title" data-i18n="Menu levels">Sales</span></a></li>
-
+        @canany(['order-view-any', 'order-view', 'order-create', 'order-update', 'order-delete'])
+        <li class="bold"><a class="waves-effect waves-cyan
+        @if(Route::currentRouteName() == "admin.orders.index"
+        or Route::currentRouteName() == "admin.orders.create"
+        or Route::currentRouteName() == "admin.orders.show"
+        or Route::currentRouteName() == "admin.orders.edit")
+            {{ 'active' }}
+            @endif" href="{{ route('admin.orders.index') }}"><i class="material-icons">monetization_on</i><span class="menu-title" data-i18n="Menu levels">Sales</span></a></li>
+        @endcanany
         <li class="navigation-header"><a class="navigation-header-text">Customers</a><i class="navigation-header-icon material-icons">more_horiz</i></li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">assignment_ind</i><span class="menu-title" data-i18n="Menu levels">Customers</span></a></li>
-
+        @canany(['customer-view-any', 'customer-view', 'customer-create', 'customer-update', 'customer-delete'])
+        <li class="bold"><a class="waves-effect waves-cyan {{ Route::currentRouteName() == 'admin.customers.index' ? 'active' : '' }}" href="{{ route('admin.customers.index') }}"><i class="material-icons">assignment_ind</i><span class="menu-title" data-i18n="Menu levels">Customers</span></a></li>
+        @endcanany
     </ul>
     <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
 </aside>

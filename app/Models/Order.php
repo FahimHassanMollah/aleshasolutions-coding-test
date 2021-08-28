@@ -10,6 +10,15 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'customer_id',
+        'transaction_type',
+        'pay_status',
+        'details',
+        'total',
+        'status',
+    ];
+
     /**
      * Belongs to Relation of Order with Customer.
      * @return BelongsTo

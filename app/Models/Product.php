@@ -47,4 +47,8 @@ class Product extends Model
             ]
         ];
     }
+
+    public function getCategoriesIdAttribute(){
+        return $this->categories()->pluck('id')->toArray();
+    }
 }

@@ -23,6 +23,7 @@ Route::prefix('v1')->group(function (){
     Route::get('categories', [CategoryController::class, 'index']);
     Route::get('categories/{category:slug}', [CategoryController::class, 'productsByCategory']);
 
+    Route::post('/orders', [OrderController::class, 'store']);
 
 });
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

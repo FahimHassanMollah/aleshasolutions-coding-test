@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Customer;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
 
@@ -32,6 +33,8 @@ class DatabaseSeeder extends Seeder
                $categories->random(2)->pluck('id')->toArray()
             );
         });
+
+        Customer::factory()->count('100')->create();
 
 
     }

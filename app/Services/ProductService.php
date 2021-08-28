@@ -17,7 +17,7 @@ class ProductService
      * @param bool $withCategories
      * @return LengthAwarePaginator|Collection|null
      */
-    public static function products(int $paginate = null, string $searchName = null, bool $withCategories = false)
+    public static function products(int $paginate = null, string $searchName = null, bool $withCategories = false, int $categoryId = null)
     {
         $products = Product::query();
         if ($searchName){
@@ -25,6 +25,11 @@ class ProductService
         }
         if ($withCategories){
             $products->with('categories');
+        }
+        if ($categoryId){
+            $products->whereHas('categories', function ($query) use ($categoryId){
+               $query->where('id', $categoryId);
+            });
         }
         if ($paginate){
             return $products->paginate($paginate);

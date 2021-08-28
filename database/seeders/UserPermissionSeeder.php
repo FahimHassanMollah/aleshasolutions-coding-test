@@ -140,6 +140,31 @@ class UserPermissionSeeder extends Seeder
                 'name'                          => 'Order Delete',
                 'slug'                          => 'order-delete',
             ],
+            [
+                'user_permission_group_id'      => 6, //Customers
+                'name'                          => 'customer View Any',
+                'slug'                          => 'customer-view-any',
+            ],
+            [
+                'user_permission_group_id'      => 6, //Customers
+                'name'                          => 'customer View',
+                'slug'                          => 'customer-view',
+            ],
+            [
+                'user_permission_group_id'      => 6, //Customers
+                'name'                          => 'customer Create',
+                'slug'                          => 'customer-create',
+            ],
+            [
+                'user_permission_group_id'      => 6, //Customers
+                'name'                          => 'customer Update',
+                'slug'                          => 'customer-update',
+            ],
+            [
+                'user_permission_group_id'      => 6, //Customers
+                'name'                          => 'customer Delete',
+                'slug'                          => 'customer-delete',
+            ],
         ]);
     }
 }

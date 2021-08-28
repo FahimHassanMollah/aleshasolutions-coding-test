@@ -35,6 +35,10 @@ class UserPermissionGroupSeeder extends Seeder
                 'id'            => 5,
                 'name'          => 'Order',
             ],
+            [
+                'id'            => 6,
+                'name'          => 'Customer',
+            ],
 
         ]);
     }

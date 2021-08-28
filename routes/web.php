@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\Pages\CustomerController;
+use App\Http\Controllers\Admin\Pages\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Pages\DashboardController;
 use App\Http\Controllers\Admin\Pages\UserGroupController;
@@ -7,24 +9,7 @@ use App\Http\Controllers\Admin\Pages\UserController;
 use App\Http\Controllers\Admin\Pages\CategoryController;
 use App\Http\Controllers\Admin\Pages\ProductController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('layouts.front');
-})->name('index');
-
-Route::any('/{*}', function (){
-    return view('layouts.front');
-})->where('any', '.*');
 
 Route::get('/blank', function () {
     return view('pages.admin.blank');
@@ -73,6 +58,26 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function(){
     Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
     //End: Admin::Catalog -> Category
 
+    //Start: Admin::Customers -> Customer
+    Route::get('customers' , [CustomerController::class, 'index'])->name('customers.index');
+    //End: Users -> Customer
+
+    //Start: Admin::Orders -> Order
+    Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::delete('orders/destroy', [OrderController::class, 'destroy'])->name('orders.destroy');
+    Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+    Route::put('orders/{order}', [OrderController::class, 'update'])->name('orders.update');
+    //End: Admin::Orders -> Order
+
 });
 
 require __DIR__.'/auth.php';
+
+// front route goes here.
+Route::get('/', function () {
+    return view('layouts.front');
+})->name('index');
+
+Route::any('/{any}', function (){
+    return view('layouts.front');
+})->where('any', '.*');

@@ -23,6 +23,8 @@ class ProductResource extends JsonResource
             'slug'          => $this->slug,
             'image'         => json_decode($this->image),
             'status'        => $this->status ? 'Active' : 'Inactive',
+            'category'      => $this->whenLoaded('categories'),
+            'category_id'   => $this->categories_id,
         ];
     }
 }

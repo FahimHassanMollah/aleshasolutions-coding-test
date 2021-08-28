@@ -37,20 +37,6 @@
                     <div class="section">
                         <div class="card">
                             <div class="card-content">
-                                <div class="row">
-                                    <form action="{{ route('admin.products.index') }}" method="get">
-                                        <div class="col s12 m10">
-                                            <input type="text" name="name" placeholder="Search by Product name">
-                                        </div>
-                                        <div class="col s12 m2">
-                                            <button type="submit" class="btn btn-small waves-effect waves-light ">Search Product</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-content">
                                 <table class="centered responsive-table">
                                     <thead>
                                     <tr>

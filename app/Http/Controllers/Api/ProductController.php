@@ -19,7 +19,8 @@ class ProductController extends Controller
     public function index(Request $request): ResourceCollection
     {
         $searchName = $request->name;
-        $products = ProductService::products(null, $searchName, false);
+        $categoryId = $request->category_id;
+        $products = ProductService::products(null, $searchName, true, $categoryId);
         return ProductResource::collection($products);
     }
 
