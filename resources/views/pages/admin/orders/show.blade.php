@@ -62,31 +62,6 @@
                             </span>
                         </div>
                         <div>
-                            <h6>Status:
-                                @if($order->status === 0)
-                                    <span class="chip red lighten-5">
-                                                    <span class="red-text">Pending</span>
-                                                </span>
-                                @elseif($order->status == 1)
-                                    <span class="chip green lighten-5">
-                                                    <span class="green-text">Accepted</span>
-                                                </span>
-                                @elseif($order->status == 2)
-                                    <span class="chip green lighten-5">
-                                                    <span class="green-text">Shipped</span>
-                                                </span>
-                                @elseif($order->status == 3)
-                                    <span class="chip green lighten-5">
-                                                    <span class="green-text">Delivered</span>
-                                                </span>
-                                @elseif($order->status == 4)
-                                    <span class="chip red lighten-5">
-                                                    <span class="red-text">Canceled</span>
-                                                </span>
-                                @endif
-                            </h6>
-                        </div>
-                        <div>
                             <h6>Order Details</h6>
                             <table>
                                 <thead>
@@ -95,13 +70,86 @@
                                         <th>Product</th>
                                         <th>Quantity</th>
                                         <th>Price</th>
-                                        <tr>Subtotal</tr>
+                                        <th class="right">Subtotal</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                @foreach(json_decode($order->details)->items as $item)
+                                    <tr>
+                                        <td>
+                                            {{ $loop->iteration }}
+                                        </td>
+                                        <td class="valign-wrapper">
+                                            <span><img src="{{ $item->image ? asset('storage')."/".$item->image : asset('app-assets/images/gallery/no-image.png') }}" class="responsive-img" alt="" width="50px" height="50px"></span>
+                                            <span>{{ $item->name}}</span>
+                                        </td>
+                                        <td>
+                                            {{ $item->quantity }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($item->price, 2) }}
+                                        </td>
+                                        <td class="right">
+                                            {{ number_format($item->subtotal, 2) }}
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="col m5 s12">
+
+                                        <h6>Order At: {{ $order->created_at }}</h6>
+                                        <div>
+                                            <h6>Status:
+                                                @if($order->status === 0)
+                                                    <span class="chip red lighten-5">
+                                                    <span class="red-text">Pending</span>
+                                                </span>
+                                                @elseif($order->status == 1)
+                                                    <span class="chip green lighten-5">
+                                                    <span class="green-text">Accepted</span>
+                                                </span>
+                                                @elseif($order->status == 2)
+                                                    <span class="chip green lighten-5">
+                                                    <span class="green-text">Shipped</span>
+                                                </span>
+                                                @elseif($order->status == 3)
+                                                    <span class="chip green lighten-5">
+                                                    <span class="green-text">Delivered</span>
+                                                </span>
+                                                @elseif($order->status == 4)
+                                                    <span class="chip red lighten-5">
+                                                    <span class="red-text">Canceled</span>
+                                                </span>
+                                                @endif
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="col xl4 m7 s12 offset-xl3">
+                                        <ul>
+                                            <li class="display-flex justify-content-between">
+                                                <span class="invoice-subtotal-title">Subtotal</span>
+                                                <h6 class="invoice-subtotal-value">$ {{ number_format(json_decode($order->details)->subtotal , 2)}}</h6>
+                                            </li>
+                                            <li class="display-flex justify-content-between">
+                                                <span class="invoice-subtotal-title">Discount</span>
+                                                <h6 class="invoice-subtotal-value">- $ {{ number_format(json_decode($order->details)->discount, 2) }}</h6>
+                                            </li>
+                                            <li class="display-flex justify-content-between">
+                                                <span class="invoice-subtotal-title">Delivery Charge</span>
+                                                <h6 class="invoice-subtotal-value" v-model="orderDetails.deliveryCharge">$ {{ number_format(json_decode($order->details)->delivery_charge, 2) }}</h6>
+                                            </li>
+                                            <li class="divider mt-2 mb-2"></li>
+                                            <li class="display-flex justify-content-between">
+                                                <span class="invoice-subtotal-title">Invoice Total</span>
+                                                <h6 class="invoice-subtotal-value" v-model="orderDetails.total" >$ {{ number_format(json_decode($order->details)->total, 2) }}</h6>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -132,7 +180,7 @@
                 </div>
                 <div class="row">
                     <div class="col s12">
-                        <button type="submit" class="right btn btn-smallmodal-close waves-effect waves-green">Update</button>
+                        <button type="submit" class="right btn btn-small modal-close waves-effect waves-green">Update</button>
                     </div>
                 </div>
             </div>
